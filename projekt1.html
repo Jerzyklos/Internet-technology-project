@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Diagramy Woronoja</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+  <h5>Jerzy Kłos, wt. 16:20</h5>
+  <h2>Diagramy Woronoja</h2>
+  <p id="introduction"> Diagram Woronoja(tesselacja Dirichleta) – podział płaszczyzny, nazwany tak na cześć twórcy
+    Gieorgija Woronoja (termin tesselacja Dirichleta pochodzi od nazwiska Petera Dirichleta).
+    W przypadku przestrzeni dwuwymiarowej, dla danego zbioru <b>n</b> punktów, dzieli się płaszczyznę na <b>n</b> obszarów, w taki sposób, że każdy punkt w dowolnym
+    obszarze znajduje się bliżej określonego punktu ze zbioru <b>n</b> punktów, niż od pozostałych  <b>n-1</b> punktów. <br> <br>
+
+    Niech <b>S</b> będzie skończonym zbiorem <b>n</b> punktów należących do przestrzeni euklidesowej <b>E</b>. Elementy zbioru <b>S</b> nazwiemy centrami, środkami lub zalążkami.
+    Obszarem Woronoja lub komórką Woronoja przypisaną pewnemu elementowi <b>p</b> zbioru <b>S</b> nazwiemy zbiór punktów znajdujących się bliżej punktu <b>p</b> niż każdego
+    innego elementu ze zbioru <b>S</b>:<br>
+  </p>
+  <div class="formula">V or<sub>S</sub> (p) = { x ∈ E|∀q ∈ S,d(x,p) ≤ d(x,q)}</div>
+  <p>
+   gdzie <b>d</b> jest odległością.<br>
+   Weźmy dwa punkty <b>a</b> i <b>b</b> należące do zbioru <b>S</b>. W przestrzeni dwuwymiarowej <b>E</b> (płaszczyzna) zbiór Π(a,b) punktów jednakowo odległych od <b>a</b>
+   i od <b>b</b> jest prostą zwaną symetralną odcinka <b>ab</b>:<br>
+  </p>
+  <div class="formula">Π(a,b)={ x∈ E|d(x,a) = d(x,b)}.</div>
+  <p>
+    Prosta ta jest granicą między zbiorem punktów mniej oddalonych od punktu <b>a</b> niż od punktu <b>b</b> a zbiorem punktów mniej oddalonych
+    od punktu <b>b</b> niż od punktu <b>a</b>.
+  </p>
+  <figure>
+    <img src="sources/voronoi_image.svg" alt="Prosty diagram Woronoja" height="500" width="500">
+    <figcaption><i>Diagram Woronoja dla 20 punktów.</i></figcaption>
+  </figure>
+  <p>
+    W najprostszym wypadku, pokazanym na powyższym obrazku, dysponujemy skończonym zbiorem punktów <b>{p1, ..., pn}</b> w przestrzeni euklidesowej.
+    W tym wypadku <b>p<sub>k</sub></b> jest punktem, a odpowiadająca mu komórka Woronoja <b>Rk</b> składa się z każdego punktu w przestrzeni euklidesowej
+    którego distans do <b>p<sub>k</sub></b> jest mniejszy bądź równy dystansowi do dowolnego innego <b>p<sub>k</sub></b>.
+  </p>
+  <p>
+    Dystans od dowolnego punktu na płaszczyźnie możemy wyznaczyć dwojako: używając wzoru na odległość Euklidesową bądź manhattańską.<br>
+    Odległość euklidesowa to nic innego jak odległość między punktami, którą znamy z geometrii:
+  </p>
+  <div class="formula"> d[(x<sub>1</sub>,x<sub>2</sub>),(y<sub>1</sub>,y<sub>2</sub>)]=&radic;<span style="border-top: 1px solid #000000; font-size: 14px;">(x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup>+(y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup></span></div>
+  <p>
+    Odległość manhattańska(ang. <i>taxicab metric</i> bądź <i>snake distance</i>) to odległość wyrażona w sumie różnicy absolutnej między współrzędnymi:
+  </p>
+  <div class="formula"> d[(x<sub>1</sub>,x<sub>2</sub>),(y<sub>1</sub>,y<sub>2</sub>)]=|x<sub>1</sub>-x<sub>2</sub>|+|y<sub>1</sub>-y<sub>2</sub>|</div>
+  <p>
+    Jej zastosowania to np. tworzenie modeli rozprzestrzeniania się ognia w przypadku pożaru lasu lub wyznaczanie ruchu wieży w szachach.
+  </p>
+  <figure>
+    <img src="sources/manhattan_image.svg" alt="Odległość manhattańska" height="400" width="400">
+    <figcaption><i>Porównanie odległości euklidesowej i manhattańskiej. W manhattańskiej wszystkie<br> z trzech dróg o kolorze czerwonym, żółtym i niebieskim
+    mają tą samą długość, równą 12.<br> Odległość euklidesowa(linia zielona) jest najkrótsza i wynosi około 8,5.</i></figcaption>
+  </figure>
+  <p id="applications">
+    <br>Przykładowe zastosowania diagramów Woronoja:<br><br>
+    - w roku 1854 lekarz John Snow, tworząc mapy obszarów korzystających z tej samej studni dowiódł, że za epidemię
+    cholery w Londynie odpowiada zakażona woda. Wykazał korelację pomiędzy używaniem konkretnego źródła wody a ilością zgonów na obszarze
+    (dodajmy, że za swoje odkrycie został wyśmiany - w tamtym czasie popularny był pogląd, że za choroby odpowiada nieczyste powietrze
+    oraz że to brzydkie zapachy są odpowiedzialne za chorobę).<br>
+    - przydział uczniów do szkół rejonowych, pacjentów do szpitali itd. <br>
+    - w telekomunikacji - sprawdzając diagram dla anten można wyznaczyć optymalne położenie dla nowej anteny
+  </p>
+  <div id="voronoi">
+    <figure>
+      <figcaption><i>Stwórz diagram- kliknij na planszę, aby ustawić punkty</i></figcaption>
+      <canvas id="voronoi_canvas" width="800" height="600" style="border:1px solid #000000;"></canvas>
+      <p>
+        <button onclick="drawVoronoi()">Draw Voronoi</button>
+        <button onclick="resetVoronoi()">Reset Voronoi</button>
+        <input type="checkbox" id="manhattan"> Manhattan distance
+      </p>
+      <p id="draw_info"></p>
+    </figure>
+  </div>
+
+<h2>Za tydzień - dowiemy się czym są fale</h2>
+<p><i>Odkąd opanowałem zagadnienie fal w fizyce, moje życie finansowe stało się mniej chaotyczne. Zrozumiałem,
+że stan mojego konta to nic innego jak fala z okresem jednego miesiąca i amplitudą równą mojej wypłacie</i> - pisze do nas pan Jarek z Wrocławia</p>
+<figure>
+  <div id="wrapper">
+    <div id="first">
+      <canvas id="wave_canvas" width="800" height="500" style="border:1px solid #000000;"></canvas>
+    </div>
+
+    <div class="slidecontainer" id="second">
+      <p class="inline"> Okres fali  :
+        <input type="range" min="1" max="100" value="50" class="slider" id="period">
+      </p>
+      <p class="inline"> Amplituda:
+        <input type="range" min="1" max="95" value="50" class="slider" id="amplitude">
+      </p>
+    </div>
+  </div>
+</figure>
+<figure>
+    <video width="600" height="400" controls>
+       <source src="sources/waves_video.mp4" type="video/mp4">
+       Your browser does not support the video tag.
+    </video>
+</figure>
+  <h2>Spis treści</h2>
+  <nav>
+    <ul>
+      <li><a href="#introduction">Diagramy Woronoja- wstęp</a></li>
+      <li><a href="#applications">Diagramy Woronoja- zastosowania</a></li>
+      <li><a href="#voronoi">Stwórz własny diagram</a></li>
+    </ul>
+  </nav>
+  <h2>Źródła</h2>
+  <nav>
+    <ul>
+        <li><a href="http://mathworld.wolfram.com/VoronoiDiagram.html">Diagram Woronoja</a></li>
+        <li><a href="https://pl.wikipedia.org/wiki/Odleg%C5%82o%C5%9B%C4%87">Wikipedia - odległość euklidesowa</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Taxicab_geometry">Wikipedia - odległość manhattańska</a></li>
+    </ul>
+  </nav>
+
+<script src="script.js"></script>
+</body>
+</html>
